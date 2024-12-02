@@ -3,11 +3,13 @@ import userSlice from "./slices/userSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import CombatPreferencesSlice from "./slices/CombatPreferences";
+import SupportPreferencesSlice from "./slices/SupportPreferences";
 
 const store = configureStore({
   reducer: {
     user: userSlice.reducer,
-    CombatPreferences: CombatPreferencesSlice.reducer
+    CombatPreferences: CombatPreferencesSlice.reducer,
+    SupportPreferencesSlice: SupportPreferencesSlice.reducer
   },
 });
 
