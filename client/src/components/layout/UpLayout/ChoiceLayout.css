@@ -1,0 +1,10 @@
+.choiceLayout {
+    display: flex;
+    padding:20px;
+    gap: 10px;
+    font-size: 25px;
+    color: #e1d798;
+    
+
+
+}

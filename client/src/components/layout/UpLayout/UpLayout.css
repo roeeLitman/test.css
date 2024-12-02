@@ -1,0 +1,10 @@
+.upLayout {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #675645;
+    color: #e1d798;
+    height: 103px;
+    font-size: 40px;
+    align-items: center;
+}

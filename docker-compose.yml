@@ -1,0 +1,39 @@
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: vote-server
+    ports:
+      - 3030:3031
+    networks:
+      - vote-network 
+    depends_on:
+      - mongo-db
+    # env_file:
+    #   - path: env
+    #   - required: true
+    environment:
+      - PORT=${PORT}
+      - DB_URI=${DB_URI}
+      - JWT_SECRET=${JWT_SECRET}
+
+  mongo-db:
+    image: mongo
+    container_name: vote-mongo-db
+    ports:
+      - "3032:27017"
+    networks:
+      - vote-network
+    restart:
+      always
+    volumes:
+      - vote-volume:/data/db
+
+networks:
+  vote-network:
+    driver: bridge
+
+volumes:
+  vote-volume:
+  
