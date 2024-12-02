@@ -88,6 +88,9 @@ const userSlice = createSlice({
         techPreferences: (state, action) => {          
              state.user.techPreferences = action.payload             
         },
+        personalNote: (state, action) => {          
+             state.user.personalNote = action.payload             
+        },
     },
     extraReducers: (builder: ActionReducerMapBuilder<any>) => {
         builder
