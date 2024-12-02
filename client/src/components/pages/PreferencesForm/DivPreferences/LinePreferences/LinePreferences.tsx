@@ -12,12 +12,9 @@ interface Props{
 
 export default function LinePreferences({role, functionsInRedux }:Props) {
     const [howMuchWant, setHowMuchWant ] = useState<null | number>(null)
-    const a = useAppSelector((s)=> s.CombatPreferences.user)
     const dispach = useDispatch()
     useEffect(()=>{
         dispach((functionsInRedux(howMuchWant)))
-        console.log(a);
-        
     },[howMuchWant])
   return (
     <div>

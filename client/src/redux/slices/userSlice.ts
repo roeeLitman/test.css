@@ -85,7 +85,7 @@ const userSlice = createSlice({
         SupportPreferences: (state, action) => {          
              state.user.supportPreferences = action.payload             
         },
-        TechPreferences: (state, action) => {          
+        techPreferences: (state, action) => {          
              state.user.techPreferences = action.payload             
         },
     },
