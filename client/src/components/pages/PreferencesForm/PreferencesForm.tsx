@@ -7,8 +7,18 @@ import './PreferencesForm.css'
 import CombatPreferencesSlice from '../../../redux/slices/CombatPreferences'
 import SupportPreferences from '../../../redux/slices/SupportPreferences'
 import techPreferences from '../../../redux/slices/TechPreferences'
-export default function PreferencesForm() {
+import { useAppDispatch, useAppSelector } from '../../../redux/store'
+import {fetchToServer} from '../../../redux/slices/userSlice'
+import userSlice from '../../../redux/slices/userSlice'
 
+export default function PreferencesForm() {
+    const dispach = useAppDispatch()
+    const {user, CombatPreferences, SupportPreferencesSlice, TechPreferencesSlice} = useAppSelector((state) => {return state})
+    const hendelInSubmit = async() => {
+        dispach(userSlice.actions.CombatPreferences(CombatPreferences))
+        dispach(userSlice.actions.SupportPreferences(SupportPreferencesSlice))
+        dispach(userSlice.actions.techPreferences(TechPreferencesSlice))
+    }
   return (
     <div className='preferencesForm'>
         <InputName/>
@@ -17,7 +27,7 @@ export default function PreferencesForm() {
         <DivPreferences functionsInRedux={{...SupportPreferences.actions}} title={"רצון לשרת כג'ובניק"} roles={['מש"ק ממטרות', 'רס"ר בנימרודי', "טבח", "ממלא מקרר בסנדוויצ'ים"]}/>
         <DivPreferences functionsInRedux={{...techPreferences.actions}} title={'רצון לשרת בתכנית קודקוד'} roles={["מפתח פולסטאק", "מפתח דאטא", "מפתח דבאופס", "תורן"]}/>
         <Remark/>
-        <button>add</button>
+        <button onClick={}>add</button>
     </div>
   )
 }
