@@ -3,6 +3,7 @@ import {
     createAsyncThunk,
     createSlice,
 } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
 
 interface CombatPreferences {
     golani: number;
@@ -24,19 +25,24 @@ const CombatPreferencesSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
-        golani: (state, action) => {
+        first: (state, action) => {
             state.user.golani = action.payload;
+            console.log(1);
+            
         },
-        armor: (state, action) => {
+        second: (state, action) => {
             state.user.armor = action.payload;
         },
-        artillery: (state, action) => {
+        Third: (state, action) => {
             state.user.artillery = action.payload;
         },
-        searchAndRescue: (state, action) => {
+        fourth: (state, action) => {
             state.user.searchAndRescue = action.payload;
         },
     },
 });
+
+export const { first, second, Third, fourth } = CombatPreferencesSlice.actions;
+
 
 export default CombatPreferencesSlice;

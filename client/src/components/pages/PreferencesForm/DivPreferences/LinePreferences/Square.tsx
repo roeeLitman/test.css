@@ -3,12 +3,13 @@ import { useDispatch } from "react-redux";
 
 interface Props {
     number: number;
+    setHowMuchWant: (num: number) => void
 }
-export default function Square({ number }: Props) { 
+export default function Square({ number, setHowMuchWant }: Props) { 
     return (
         <div>
             <label className="kNQqukZg" htmlFor="">
-                <input type="radio" value={number} />
+                <input onClick={(e)=>{ setHowMuchWant(e.target.value)}} type="radio" value={number} />
                 <span>{number}</span>
             </label>
         </div>
