@@ -7,6 +7,6 @@ interface Props{
 
 export default function Role({role}:Props) {
   return (
-    <p>{role}</p>
+    <span>{role}</span>
   )
 }

@@ -15,14 +15,13 @@ export default function PreferencesForm() {
     const dispach = useAppDispatch()
     const {user, CombatPreferences, SupportPreferencesSlice, TechPreferencesSlice} = useAppSelector((state) => {return state})
     const hendelInSubmit = async() => {
-        
-        await (async () => {  dispach(userSlice.actions.CombatPreferences(CombatPreferences.user))})()
-        await (async ()=> { dispach(userSlice.actions.SupportPreferences(SupportPreferencesSlice.user))})()
-        await (async () => { dispach(userSlice.actions.techPreferences(TechPreferencesSlice.user))})()
+        await (async () => {await dispach(userSlice.actions.CombatPreferences(CombatPreferences.user))})()
+        await (async () => {await dispach(userSlice.actions.SupportPreferences(SupportPreferencesSlice.user))})()
+        await (async () => {await dispach(userSlice.actions.techPreferences(TechPreferencesSlice.user))})()
         await dispach(fetchToServer(user.user))
         console.log(user.user);
-        
     }
+    
   return (
     <div className='preferencesForm'>
         <InputName/>
@@ -31,7 +30,7 @@ export default function PreferencesForm() {
         <DivPreferences functionsInRedux={{...SupportPreferences.actions}} title={"רצון לשרת כג'ובניק"} roles={['מש"ק ממטרות', 'רס"ר בנימרודי', "טבח", "ממלא מקרר בסנדוויצ'ים"]}/>
         <DivPreferences functionsInRedux={{...techPreferences.actions}} title={'רצון לשרת בתכנית קודקוד'} roles={["מפתח פולסטאק", "מפתח דאטא", "מפתח דבאופס", "תורן"]}/>
         <Remark/>
-        <button onClick={hendelInSubmit}>add</button>
+        <button onClick={async()=>{await hendelInSubmit()}}>add</button>
     </div>
   )
 }

@@ -27,7 +27,7 @@ const initialState = {
 
 
 const SupportPreferencesSlice = createSlice({
-    name: "user",
+    name: "SupportPreferences",
     initialState,
     reducers: {
         first: (state, action) => {

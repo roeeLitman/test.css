@@ -1,0 +1,11 @@
+.linePreferences{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.Squares{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

@@ -22,7 +22,7 @@ const initialState = {
     },
 };
 const TechPreferencesSlice = createSlice({
-    name: "user",
+    name: "TechPreferences",
     initialState,
     reducers: {
         first: (state, action) => {

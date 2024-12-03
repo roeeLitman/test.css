@@ -3,6 +3,8 @@ import LinePreferences from "./LinePreferences/LinePreferences";
 import { useDispatch } from "react-redux";
 import CombatPreferencesSlice from "../../../../redux/slices/CombatPreferences";
 import { Action, UnknownAction } from "redux";
+import './DivPreferences.css'
+
 
 interface Props {
     roles: string[];
@@ -22,7 +24,7 @@ export default function DivPreferences({
 }: Props) {
 
     return (
-        <div>
+        <div className="divPreferences">
             <p>{title}</p>
             <LinePreferences
                 functionsInRedux={functionsInRedux.first}

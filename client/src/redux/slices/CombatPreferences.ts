@@ -22,12 +22,11 @@ const initialState = {
     }
 };
 const CombatPreferencesSlice = createSlice({
-    name: "user",
+    name: "CombatPreferences",
     initialState,
     reducers: {
         first: (state, action) => {
             state.user.golani = action.payload;
-            console.log(1);
             
         },
         second: (state, action) => {
