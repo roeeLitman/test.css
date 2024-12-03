@@ -30,9 +30,24 @@ const initialState = {
     user: {
         name: "",
         personalNote: "",
-        combatPreferences: {},
-        supportPreferences: {},
-        techPreferences: {},
+        combatPreferences: {
+          golani: null,
+          armor: null,
+          artillery: null,
+          searchAndRescue: null
+        },
+        supportPreferences: {
+          targetingNCO: null,
+          nimrodiSergeant: null,
+          cook: null,
+          sandwichFiller: null
+        },
+        techPreferences: {
+          fullstack: null,
+          data: null,
+          devops: null,
+          duty: null,
+        },
     },
 };
 
@@ -48,7 +63,7 @@ export const fetchToServer = createAsyncThunk(
         },
         thunkApi
     ) => {
-        try {
+        try {          
             const res = await fetch(
                 `http://localhost:3030/api/military-forms`,
                 {
@@ -61,7 +76,11 @@ export const fetchToServer = createAsyncThunk(
             );
             if (res.status != 200) {
                 thunkApi.rejectWithValue("Can't login, please try again");
+                console.log("/");
+                
             }
+            console.log(1);
+            
             const data = await res.json();
             // thunkApi.fulfillWithValue(data);
             localStorage.setItem("Authorization", data.token);
@@ -80,31 +99,30 @@ const userSlice = createSlice({
              state.user.name = action.payload             
         },
         CombatPreferences: (state, action) => {          
-             state.user.combatPreferences = action.payload             
+             state.user.combatPreferences = action.payload
+             
         },
         SupportPreferences: (state, action) => {          
              state.user.supportPreferences = action.payload             
         },
         techPreferences: (state, action) => {          
-             state.user.techPreferences = action.payload             
+             state.user.techPreferences = action.payload  
         },
         personalNote: (state, action) => {          
-             state.user.personalNote = action.payload             
+             state.user.personalNote = action.payload  
+                        
         },
     },
     extraReducers: (builder: ActionReducerMapBuilder<any>) => {
         builder
             .addCase(fetchToServer.pending, (state) => {
                 state.error = null;
-                state.user = null;
             })
-            .addCase(fetchToServer.fulfilled, (state, action) => {
+            .addCase(fetchToServer.fulfilled, (state) => {
                 state.error = null;
-                state.user = action.payload;
             })
             .addCase(fetchToServer.rejected, (state, action) => {
                 state.error = action.error as string;
-                state.user = null;
             });
     },
 });
